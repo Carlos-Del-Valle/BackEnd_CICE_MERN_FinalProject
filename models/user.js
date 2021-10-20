@@ -1,8 +1,8 @@
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 const uuidv1 = require('uuidv1');
 const crypto = require('crypto');
 
-const userScheme = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
