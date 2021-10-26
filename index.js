@@ -1,16 +1,27 @@
 // set up server
-const express = require("express"); //
-const app = express(); //
+const express = require("express")
+const app = express()
+const mongoose = require("mongoose")
+
+require("dotenv").config()
 
 app.get("/", (req, res) => {
     res.send("WELCOME FURRO")
 })
 
+const connection_string = process.env.CONNECTION_STRING
+
 app.listen(5000, () =>{
     console.log("Server running on port 5000")
 })
 
-
+mongoose.connect(connection_string, {
+    useNewUrlParser:true,
+    // useCreateIndex: true, DEPRECATED
+    useUnifiedTopology: true
+})
+    .then(()=> console.log("MongoDB connected!"))
+    .catch((error) => console.error("MongoDB connection failed:", error.message))
 
 /*
 const mongoose = require("mongoose");
