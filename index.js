@@ -29,7 +29,8 @@ app.listen(port, () =>{
 mongoose.connect(connection_string, {
     useNewUrlParser:true,
     // useCreateIndex: true, DEPRECATED
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    // useFindAndModify: false NOT SUPPORTED
 })
     .then(()=> console.log("MongoDB connected!"))
     .catch((error) => console.error("MongoDB connection failed:", error.message))
