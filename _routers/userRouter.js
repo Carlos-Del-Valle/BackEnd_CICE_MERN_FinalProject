@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 
-//import controllers
-const { register, login, logout, getLoggedInUser } = require("../controllers/user");
-//import middlewares
-const {userRegisterValidator, userById} = require("../middlewares/user")
-const {verifyToken} = require("../middlewares/auth")
+//import _controllers
+const { register, login, logout, getLoggedInUser } = require("../_controllers/user");
+//import _middlewares
+const {userRegisterValidator, userById} = require("../_middlewares/user")
+const {verifyToken} = require("../_middlewares/auth")
 
-//api routers
+//api _routers
 router.post("/register", userRegisterValidator, register);
 router.post("/login", login);
 router.get("/logout", logout);

@@ -1,9 +1,19 @@
-// set up server
+const todos = require("./routes/todos")
+
+// set up server (remember that in node.js the use of module is still experimental)
 const express = require("express")
 const app = express()
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 require("dotenv").config()
+
+//Middlewares (remember everything that uses .use is a middleware)
+app.use(cors())
+app.use(express.json())
+
+app.use("/api/todos", todos)
+
 
 app.get("/", (req, res) => {
     res.send("WELCOME FURRO")
@@ -51,7 +61,7 @@ mongoose
     .catch((err) => console.log("DB CONNECTION ERROR", err));
 
 // middleware
-index.use("auth", require("./routers/userRouter"));
+index.use("auth", require("./_routers/userRouter"));
 index.use(morgan("dev"));
 index.use(cors({ origin: true, credentials: true }));
 index.use(express.json());
@@ -61,8 +71,8 @@ index.use(expressValidator());
 
 
 
-// routers
-const userRoutes = require("./routers/userRouter");
+// _routers
+const userRoutes = require("./_routers/userRouter");
 index.use("/", userRoutes);
 
 

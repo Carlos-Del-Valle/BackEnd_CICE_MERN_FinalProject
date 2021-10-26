@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-// import controllers
-const { getTest } = require("../controllers/test");
-// import  middlewares
+// import _controllers
+const { getTest } = require("../_controllers/test");
+// import  _middlewares
 
-// api routers
+// api _routers
 router.get("/test", getTest);
 
 
