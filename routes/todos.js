@@ -4,6 +4,18 @@ const Joi = require("joi")
 
 const router = express.Router()
 
+router.get("/", async(req, res) => {
+    try{
+    const todos = await Todo.find()
+        .sort({ date: -1 })
+        //.select({ name: 1 })
+        res.send(todos)
+    } catch(error){
+      res.status(500).send(error.message)
+        console.log(error.message)
+    }
+})
+
 router.post("/", async(req, res)=> {
     const schema = Joi.object({
         name: Joi.string().min(3).max(200).required(),
