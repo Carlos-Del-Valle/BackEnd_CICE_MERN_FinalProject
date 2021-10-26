@@ -5,7 +5,7 @@ const router = express.Router();
 const { getTest } = require("../controllers/test");
 // import  middlewares
 
-// api routes
+// api routers
 router.get("/test", getTest);
 
 

@@ -1,10 +1,14 @@
-// import  modules
+// set up server
 const express = require("express");
-const { json, urlencoded } = express;
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
+
+
+// import  modules
+const { json, urlencoded } = express;
 const morgan = require("morgan");
 const cors = require("cors");
-require("dotenv").config();
 
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
@@ -22,17 +26,18 @@ mongoose
     .catch((err) => console.log("DB CONNECTION ERROR", err));
 
 // middleware
+app.use("auth", require("./routers/userRouter"));
 app.use(morgan("dev"));
 app.use(cors({ origin: true, credentials: true }));
-app.use(json());
+app.use(express.json());
 app.use(urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(expressValidator());
 
 
 
-// routes
-const userRoutes = require("./routes/user");
+// routers
+const userRoutes = require("./routers/userRouter");
 app.use("/", userRoutes);
 
 
