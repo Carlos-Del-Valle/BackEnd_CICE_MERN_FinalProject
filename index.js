@@ -1,5 +1,18 @@
 // set up server
-const express = require("express");
+const express = require("express"); //
+const app = express(); //
+
+app.get("/", (req, res) => {
+    res.send("WELCOME FURRO")
+})
+
+app.listen(5000, () =>{
+    console.log("Server running on port 5000")
+})
+
+
+
+/*
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -13,8 +26,8 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const expressValidator = require("express-validator");
 
-// app
-const app = express();
+// index
+const index = express();
 
 // db
 mongoose
@@ -26,24 +39,27 @@ mongoose
     .catch((err) => console.log("DB CONNECTION ERROR", err));
 
 // middleware
-app.use("auth", require("./routers/userRouter"));
-app.use(morgan("dev"));
-app.use(cors({ origin: true, credentials: true }));
-app.use(express.json());
-app.use(urlencoded({extended: false}));
-app.use(cookieParser());
-app.use(expressValidator());
+index.use("auth", require("./routers/userRouter"));
+index.use(morgan("dev"));
+index.use(cors({ origin: true, credentials: true }));
+index.use(express.json());
+index.use(urlencoded({extended: false}));
+index.use(cookieParser());
+index.use(expressValidator());
 
 
 
 // routers
 const userRoutes = require("./routers/userRouter");
-app.use("/", userRoutes);
+index.use("/", userRoutes);
 
 
 // port
 const port = process.env.PORT || 8080;
 
 // listener
-const server = app.listen(port, () =>
+const server = index.listen(port, () =>
     console.log(`Server is running on port ${port}`));
+
+
+ */
