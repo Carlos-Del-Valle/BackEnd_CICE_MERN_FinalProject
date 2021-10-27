@@ -1,4 +1,4 @@
-const User = require("../models/_userModel");
+const User = require("../models/user");
 
 exports.userRegisterValidator = (req, res, next) => {
     // username is not null

@@ -1,4 +1,6 @@
 const todos = require("./routes/todos")
+const signUp = require("./routes/signUp")
+const signIn = require("./routes/signIn")
 
 // set up server (remember that in node.js the use of module is still experimental)
 const express = require("express")
@@ -12,7 +14,10 @@ require("dotenv").config()
 app.use(cors())
 app.use(express.json())
 
+//endpoints
 app.use("/api/todos", todos)
+app.use("/api/signup", signUp)
+app.use("/api/signin", signIn)
 
 
 app.get("/", (req, res) => {

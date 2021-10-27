@@ -1,34 +1,54 @@
 const mongoose = require('mongoose');
-const uuidv1 = require('uuidv1');
-const crypto = require('crypto');
+const uuidv1 = require('uuidv1'); //
+const crypto = require('crypto'); //
 
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        trim: true,
-        unique: true,
-        lowercase: true,
+        // trim: true,
+        // unique: true,
+        // lowercase: true,
+        minlength: 3,
+        maxlength: 30
     },
     email: {
         type: String,
         required: true,
-        trim: true,
+        //trim: true,
         unique: true,
-        lowercase: true,
+        //lowercase: true,
+        minlength: 3,
+        maxlength: 200,
+
     },
-    hashedPassword: {
+
+    password: {
+        type: String,
+        required: true,
+        minlength: 6,
+        maxlength: 1024,
+    },
+
+    /*hashedPassword: {
         type: String,
         required:true,
-
+        minlength: 6,
+        maxlength: 1024
 
     },
     salt:String,
     },
     {
         timestamps: true,
-    }
-    );
+    }*/
+});
+
+const User = mongoose.model("User", userSchema);
+
+exports.User = User
+
+/*
 
 //virtual field
 userSchema.virtual("password").set(function(password) {
@@ -63,6 +83,7 @@ userSchema.virtual("password").set(function(password) {
         },
     };
 
-const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+
+
+ */
