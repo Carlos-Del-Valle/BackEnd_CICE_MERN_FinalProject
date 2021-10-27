@@ -1,14 +1,17 @@
 const { Todo } = require("../models/todo")
+const auth = require("../middleware/auth")
 const express = require("express")
 const Joi = require("joi")
 
 const router = express.Router()
 
-router.get("/", async(req, res) => {
+router.get("/", auth, async(req, res) => {
     try{
     const todos = await Todo.find()
         .sort({ date: -1 })
         //.select({ name: 1 })
+        console.log(req.user)
+
         res.send(todos)
     } catch(error){
       res.status(500).send(error.message)
