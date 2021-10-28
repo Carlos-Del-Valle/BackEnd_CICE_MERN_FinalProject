@@ -22,7 +22,7 @@ router.post("/", async(req, res) => {
     if(error) return res.status(400).send(error.details[0].message)
 
     // does the user exist
-    try {
+
         let user = await User.findOne({email: req.body.email})
         if (!user)
             return res.status(400).send("Invalid Email or password")
@@ -37,10 +37,7 @@ router.post("/", async(req, res) => {
 
             res.send(token)
 
-    } catch(error) {
-        res.status(500).send(error.message)
-        console.log(error.message)
-    }
+
 })
 
 module.exports = router
