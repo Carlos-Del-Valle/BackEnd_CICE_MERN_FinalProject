@@ -21,7 +21,7 @@ router.post("/", async (req, res) => {
 
     // does user exist?
 
-    try {
+
         let user = await User.findOne({email: req.body.email})
         if (user) return res.status(400).send("User with that email already exist")
 
@@ -43,10 +43,6 @@ router.post("/", async (req, res) => {
 
         res.send(token)
 
-    } catch(error) {
-        res.status(500).send(error.message)
-        console.log(error.message)
-    }
 })
 
 module.exports = router

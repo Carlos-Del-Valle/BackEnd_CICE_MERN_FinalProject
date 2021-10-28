@@ -22,7 +22,7 @@ router.get("/", auth, async(req, res) => {
 router.post("/", auth, async(req, res)=> {
     const schema = Joi.object({
         name: Joi.string().min(3).max(200).required(),
-        author: Joi.string.min(3).max(30),
+        author: Joi.string().min(3).max(30),
         uid: Joi.string(),
         isComplete: Joi.boolean(),
         date: Joi.date()
@@ -57,7 +57,7 @@ router.post("/", auth, async(req, res)=> {
 router.put("/:id", auth, async(req, res) => {
     const schema = Joi.object({
         name: Joi.string().min(3).max(200).required(),
-        author: Joi.string.min(3).max(30),
+        author: Joi.string().min(3).max(30),
         uid: Joi.string(),
         isComplete: Joi.boolean(),
         date: Joi.date()
