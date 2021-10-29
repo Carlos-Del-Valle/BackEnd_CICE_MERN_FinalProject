@@ -14,8 +14,8 @@ require("dotenv").config()
 /* const corsOptions = {
     origin: 'https://sharp-poitras-bece04.netlify.app',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-} */
-
+}
+*/
 /*const whitelist = ['https://sharp-poitras-bece04.netlify.app', 'https://sharp-poitras-bece04.netlify.app/signup']
 const corsOptions = {
     origin: function (origin, callback) {
@@ -28,16 +28,17 @@ const corsOptions = {
 }
 
 */
-//app.use(cors())
+app.use(cors())
 
-app.use(cors({
+/* app.use(cors({
    "origin": "*",
    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
    "preflightContinue": false,
    "optionsSuccessStatus": 204
  }));
+*/
 
-app.use((req, res, next) => {
+/* app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
@@ -48,10 +49,10 @@ app.use((req, res, next) => {
     }
     next();
 });
+*/
 
 
-
-
+/*
 app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
 app.del('/products/:id', cors(), function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
@@ -60,6 +61,7 @@ app.del('/products/:id', cors(), function (req, res, next) {
 app.listen(80, function () {
     console.log('CORS-enabled web server listening on port 80')
 })
+*/
 
 //Middlewares (remember everything that uses .use is a middleware)
 app.use(express.json())
