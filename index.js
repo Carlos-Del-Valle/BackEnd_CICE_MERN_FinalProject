@@ -33,7 +33,7 @@ const corsOptions = {
 app.use(cors({
    "origin": "*",
    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-   "preflightContinue": true,
+   "preflightContinue": false,
    "optionsSuccessStatus": 204
  }));
 
@@ -48,6 +48,9 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+
+
 
 app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
 app.del('/products/:id', cors(), function (req, res, next) {
