@@ -1,6 +1,5 @@
 const express = require("express")
-const cors = require("cors")
-const app = express()
+//const cors = require("cors")
 
 const todos = require("./routes/todos")
 const signUp = require("./routes/signUp")
@@ -10,6 +9,7 @@ const signIn = require("./routes/signIn")
 const mongoose = require("mongoose")
 require("dotenv").config()
 
+const app = express()
 
 /* const corsOptions = {
     origin: 'https://sharp-poitras-bece04.netlify.app',
@@ -28,6 +28,7 @@ const corsOptions = {
 }
 
 */
+cors = require('./cors');
 app.use(cors())
 
 /* app.use(cors({
@@ -87,7 +88,7 @@ mongoose.connect(connection_string, {
     useNewUrlParser:true,
     // useCreateIndex: true, DEPRECATED
     useUnifiedTopology: true,
-    // useFindAndModify: false NOT SUPPORTED
+    // useFindAndModify: false not supported on mong.db
 })
     .then(()=> console.log("MongoDB connected!"))
     .catch((error) => console.error("MongoDB connection failed:", error.message))
