@@ -16,7 +16,7 @@ require("dotenv").config()
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 } */
 
-const whitelist = ['https://sharp-poitras-bece04.netlify.app']
+const whitelist = ['https://sharp-poitras-bece04.netlify.app', 'https://sharp-poitras-bece04.netlify.app/signup']
 const corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
