@@ -28,7 +28,10 @@ const corsOptions = {
 }
 
 */
-app.use(cors())
+//app.use(cors())
+
+app.use(cors({ origin: true }));
+
 /* app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
@@ -41,14 +44,14 @@ app.use(cors())
     next();
 }); */
 
-app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
+  /*app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
 app.del('/products/:id', cors(), function (req, res, next) {
     res.json({msg: 'This is CORS-enabled for all origins!'})
 })
 
 app.listen(80, function () {
     console.log('CORS-enabled web server listening on port 80')
-})
+}) */
 
 //Middlewares (remember everything that uses .use is a middleware)
 app.use(express.json())
