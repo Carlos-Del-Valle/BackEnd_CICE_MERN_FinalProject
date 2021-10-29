@@ -37,7 +37,7 @@ app.use(cors({
    "optionsSuccessStatus": 204
  }));
 
-/* app.use((req, res, next) => {
+app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Access-Control-Allow-Headers',
         'Origin, X-Requested-With, Content-Type, Accept, Authorization'
@@ -47,7 +47,7 @@ app.use(cors({
         return res.status(200).json({});
     }
     next();
-}); */
+});
 
 app.options('/products/:id', cors()) // enable pre-flight request for DELETE request
 app.del('/products/:id', cors(), function (req, res, next) {
