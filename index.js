@@ -11,18 +11,21 @@ const cors = require("cors")
 require("dotenv").config()
 
 //Middlewares (remember everything that uses .use is a middleware)
-const corsOptions = {
+
+/*const corsOptions = {
     origin: 'https://sharp-poitras-bece04.netlify.app',
     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+*/
 
-app.all('/', function(req, res, next) {
+/*app.all('/', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
 });
+*/
 
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json())
 
 //endpoints
